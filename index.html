@@ -210,17 +210,12 @@
                     <p class="text-lg text-gray-500 font-medium">İşletmenizin ihtiyacına en uygun paketi seçin.</p>
 
                     <!-- Pricing Toggle -->
-                    <div class="flex items-center justify-center gap-4 mt-8">
-                        <span id="label-monthly" class="text-sm font-medium text-gray-400 transition-colors duration-300">Aylık</span>
-                        <button id="pricing-toggle" type="button" aria-label="Fiyatlandırma periyodunu değiştir"
-                            class="relative inline-flex h-8 w-[3.75rem] items-center rounded-full bg-gradient-to-r from-blue-500 to-blue-700 shadow-inner transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                            <span id="toggle-knob"
-                                class="inline-block h-6 w-6 transform rounded-full bg-white shadow-md transition-transform duration-300 translate-x-[1.875rem]"></span>
-                        </button>
-                        <div class="flex items-center gap-2">
-                            <span id="label-annual" class="text-sm font-bold text-gray-900 transition-colors duration-300">Yıllık</span>
-                            <span class="inline-flex items-center rounded-full bg-green-50 px-2.5 py-0.5 text-xs font-bold text-green-700 border border-green-200">Tasarruf Edin</span>
-                        </div>
+                    <div id="pricing-toggle" style="display:inline-flex;align-items:center;margin-top:2rem;background:#f3f4f6;border-radius:9999px;padding:4px;border:1px solid #e5e7eb;cursor:pointer;user-select:none;">
+                        <span id="toggle-monthly" style="padding:0.5rem 1.5rem;border-radius:9999px;font-size:0.875rem;font-weight:500;color:#6b7280;transition:all 0.3s ease;">Aylık</span>
+                        <span id="toggle-annual" style="padding:0.5rem 1.5rem;border-radius:9999px;font-size:0.875rem;font-weight:600;color:#fff;background:linear-gradient(to right,#3b82f6,#1d4ed8);box-shadow:0 1px 3px rgba(0,0,0,0.15);transition:all 0.3s ease;">Yıllık</span>
+                    </div>
+                    <div style="margin-top:0.5rem;">
+                        <span id="savings-badge" style="display:inline-flex;align-items:center;padding:0.25rem 0.75rem;border-radius:9999px;font-size:0.75rem;font-weight:700;color:#15803d;background:#f0fdf4;border:1px solid #bbf7d0;">%17'ye varan tasarruf</span>
                     </div>
                 </div>
 
@@ -905,41 +900,23 @@
     <!-- Pricing Toggle Script -->
     <script>
         (function () {
-            const toggle = document.getElementById('pricing-toggle');
-            const knob = document.getElementById('toggle-knob');
-            const labelMonthly = document.getElementById('label-monthly');
-            const labelAnnual = document.getElementById('label-annual');
-            const priceAmounts = document.querySelectorAll('.price-amount');
-            const pricePeriods = document.querySelectorAll('.price-period');
-            let isAnnual = true;
+            var toggleMonthly = document.getElementById('toggle-monthly');
+            var toggleAnnual = document.getElementById('toggle-annual');
+            var savingsBadge = document.getElementById('savings-badge');
+            var priceAmounts = document.querySelectorAll('.price-amount');
+            var pricePeriods = document.querySelectorAll('.price-period');
+            var isAnnual = true;
 
-            toggle.addEventListener('click', function () {
-                isAnnual = !isAnnual;
+            var activeStyle = 'padding:0.5rem 1.5rem;border-radius:9999px;font-size:0.875rem;font-weight:600;color:#fff;background:linear-gradient(to right,#3b82f6,#1d4ed8);box-shadow:0 1px 3px rgba(0,0,0,0.15);transition:all 0.3s ease;cursor:pointer;';
+            var inactiveStyle = 'padding:0.5rem 1.5rem;border-radius:9999px;font-size:0.875rem;font-weight:500;color:#6b7280;background:none;box-shadow:none;transition:all 0.3s ease;cursor:pointer;';
 
-                // Toggle knob position
-                if (isAnnual) {
-                    knob.style.transform = 'translateX(1.875rem)';
-                    toggle.className = toggle.className.replace('bg-gray-300', 'bg-gradient-to-r from-blue-500 to-blue-700');
-                    if (!toggle.className.includes('bg-gradient-to-r')) {
-                        toggle.classList.add('bg-gradient-to-r', 'from-blue-500', 'to-blue-700');
-                    }
-                } else {
-                    knob.style.transform = 'translateX(0.25rem)';
-                    toggle.classList.remove('bg-gradient-to-r', 'from-blue-500', 'to-blue-700');
-                    toggle.classList.add('bg-gray-300');
-                }
+            function updatePricing() {
+                var period = isAnnual ? 'annual' : 'monthly';
+                var periodLabel = isAnnual ? '/yıllık' : '/aylık';
 
-                // Toggle label styles
-                labelAnnual.className = isAnnual
-                    ? 'text-sm font-bold text-gray-900 transition-colors duration-300'
-                    : 'text-sm font-medium text-gray-400 transition-colors duration-300';
-                labelMonthly.className = isAnnual
-                    ? 'text-sm font-medium text-gray-400 transition-colors duration-300'
-                    : 'text-sm font-bold text-gray-900 transition-colors duration-300';
-
-                // Update prices with animation
-                const period = isAnnual ? 'annual' : 'monthly';
-                const periodLabel = isAnnual ? '/yıllık' : '/aylık';
+                toggleAnnual.style.cssText = isAnnual ? activeStyle : inactiveStyle;
+                toggleMonthly.style.cssText = isAnnual ? inactiveStyle : activeStyle;
+                savingsBadge.style.opacity = isAnnual ? '1' : '0';
 
                 priceAmounts.forEach(function (el) {
                     el.style.opacity = '0';
@@ -954,12 +931,26 @@
                 pricePeriods.forEach(function (el) {
                     el.textContent = periodLabel;
                 });
+            }
+
+            toggleMonthly.addEventListener('click', function () {
+                if (!isAnnual) return;
+                isAnnual = false;
+                updatePricing();
+            });
+
+            toggleAnnual.addEventListener('click', function () {
+                if (isAnnual) return;
+                isAnnual = true;
+                updatePricing();
             });
 
             // Add transition styles to price amounts
             priceAmounts.forEach(function (el) {
                 el.style.transition = 'opacity 0.15s ease, transform 0.15s ease';
             });
+
+            savingsBadge.style.transition = 'opacity 0.3s ease';
         })();
     </script>
 </body>
