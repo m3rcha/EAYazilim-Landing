@@ -2,38 +2,48 @@
 
 ## What Works
 - Main landing page (`index.html`) is fully designed with Hero, Features, Sectors, Pricing, FAQ, and Contact sections.
-- All legal documentation pages are created and styled (`gizlilik-politikasi.html`, `iade-politikasi.html`, `kullanim-kosullari.html`, `kvkk-aydinlatma-metni.html`).
-- Tailwind CSS styling is fully configured and compiled successfully.
-- Contact information reflects the latest updates (+90 541 554 75 47, Manisa/Şehzadeler).
-- Landing page content is optimized for efficiency and digital transformation messaging.
-- Pricing structure is updated to an annual subscription model (+VAT).
+- All legal documentation pages are created and styled.
+- Tailwind CSS styling is fully configured and compiled.
+- Contact information: +90 541 554 75 47, Manisa/Şehzadeler.
+- Annual subscription pricing model (+VAT) is live.
 
 ## Completed Phases
-- Phase 1: Secure Form Submission endpoint & Database integration (Supabase/Serverless) is fully functional.
-- Phase 2: Secure login system and Admin Dashboard for `admin.eayazilim.tr` to view form submissions is fully functional.
-- Phase 3: Admin Management & RBAC system for the super-admin `ege.ozten` with Edge Function integration is complete.
-- Phase 4: POS Dashboard API (`pos-api/`) and Business Owner Dashboard (`pos-dashboard/`) are built, deployed, and operational.
-- Phase 5 (Production Upgrade): Zod validation, Winston centralized logging (`system_logs` table), Admin Business Management page, API Key middleware — all complete.
-- Phase 6 (Licensing - DB & API & Admin UI): Tiered licensing infrastructure, middleware enforcement, and admin controls are complete.
-- Phase 7 (Tiered Dashboard Analytics): Modular dashboard with Chart.js, Heatmaps, Device Performance, and Excel/PDF Export based on tier is complete.
-- Phase 8 (Admin Panel Reporting): Added 30-day transaction PDF export and monthly email statement placeholder in `BusinessManagement.jsx`.
+- Phase 1: Secure Form Submission endpoint & Database integration (Supabase/Serverless).
+- Phase 2: Secure login system and Admin Dashboard for `admin.eayazilim.tr`.
+- Phase 3: Admin Management & RBAC with Edge Function for super_admin.
+- Phase 4: POS Dashboard API (`pos-api/`) and Business Owner Dashboard (`pos-dashboard/`).
+- Phase 5: Zod validation, Winston logging, Admin Business Management, API Key middleware.
+- Phase 6: Tiered licensing infrastructure, middleware enforcement, admin controls.
+- Phase 7: Modular dashboard with Chart.js, Heatmaps, Device Performance, Excel/PDF Export.
+- Phase 8: 30-day transaction PDF export and monthly email statement placeholder in Admin Panel.
+- Phase 9 (Mobile Optimization): Admin Panel converted to mobile-first with bottom tab bar, hide-on-mobile utility class, and responsive modals.
+- Phase 10 (POS Dashboard Mobile): POS Dashboard split into tabbed mobile layout (Özet / İşlemler / Çıkış) with a fixed bottom navigation bar.
+- Phase 11 (UX & Security):
+  - Administrator name auto-displayed from email prefix in Admin Management table.
+  - `email` column added to `admin_roles` table; Edge Function updated to store it.
+  - License expiry warning banner added to POS Dashboard (shown at 15, 10, 5, 3, 1 days remaining).
+  - Auto-deactivation: When an expired business tries to log in, `is_licensed` is set to `false` automatically via `licenseCheck.js` middleware.
+  - Business Management modal fixed: flex layout with scrollable body so "Extend License" button is always visible.
+- Phase 12 (Branding):
+  - `logo-horizontal.svg` and `logo-square.svg` designed and deployed.
+  - Logos implemented across all three sites: `eayazilim.tr`, `admin.eayazilim.tr`, `restoran.eayazilim.tr`.
+  - Favicons updated on all three sites to use `logo-square.svg`.
+  - Browser tab titles updated with proper product names.
+  - POS Dashboard login logo centered and enlarged to 80px height.
 
 ## What's Left to Build
 - Deploy updated `pos-api/`, `pos-dashboard/`, and `admin-panel/` to Vercel.
+- Run SQL migration: `ALTER TABLE public.admin_roles ADD COLUMN email TEXT;` and `UPDATE public.admin_roles SET email = 'your@email.com' WHERE role = 'super_admin';`
+- Implement email automation for "Send Monthly Statement" feature (Resend or Mailgun).
 - Implement Supabase JWT/Auth for dashboard endpoints (future security enhancement).
 
 ## Current Status
-- The main website is in a production-ready static state with full form backend integration.
-- The Admin Panel is successfully deployed to Vercel and fully functional.
-- The Supabase Edge Function is deployed and handling admin creations securely.
-- POS Dashboard API (`pos-api/`) is deployed to Vercel with environment variables configured.
-- Business Owner Dashboard (`pos-dashboard/`) is deployed to Vercel at `restoran.eayazilim.tr`.
-- Phase 4 SQL schema (`businesses` and `transactions` tables) is live in Supabase.
-- Domain `admin.eayazilim.tr` is connected and operational.
-- POS API upgraded with: Zod validation, Winston logger, API Key middleware, License Check middleware.
-- `system_logs` table is live in Supabase for centralized error logging.
-- `businesses` table has licensing columns (`is_licensed`, `license_tier`, `license_expires_at`).
-- Middleware chain: `withApiKey → withLicenseCheck → handler` is active on both API endpoints.
+- All three production sites are fully operational and branded.
+- Admin Panel: Mobile-first, responsive, with bottom tab bar on mobile.
+- POS Dashboard: Mobile-first, tabbed layout, license warning system active.
+- POS API: Auto-deactivates expired licenses on login attempt.
+- `admin_roles` schema updated with `email` column (requires SQL migration on Supabase).
+- Logo assets: `logo-horizontal.svg` and `logo-square.svg` distributed to all projects.
 
 ## Known Issues
 - None explicitly tracked at the moment.
