@@ -129,6 +129,13 @@ CREATE POLICY "Allow service_role full access to transactions"
     USING (true)
     WITH CHECK (true);
 
+-- Allow authenticated admins to read transactions (for PDF reports)
+CREATE POLICY "Allow authenticated read transactions"
+    ON public.transactions
+    FOR SELECT
+    TO authenticated
+    USING (true);
+
 -- Performance Indexes
 CREATE INDEX idx_transactions_business_id ON public.transactions(business_id);
 CREATE INDEX idx_transactions_created_at ON public.transactions(created_at DESC);
