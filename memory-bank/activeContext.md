@@ -36,15 +36,11 @@
 - Extended Supabase schema with `businesses` and `transactions` tables (Phase 4).
 
 ## Next Steps
-- **Phase 3 (Admin UI):** Update `BusinessManagement.jsx` with:
-  - Tier badges (gold=Enterprise, blue=Pro, gray=Basic) and license status badges (green/red) in table
-  - Tier dropdown + license toggle in create modal
-  - Edit modal for existing businesses with "1 Yıl Uzat" (Extend 1 Year) button
-  - Supporting CSS: toggle switch, form-select, tier/status badge styles
-- Deploy updated `pos-api/` to Vercel with `POS_API_KEY` environment variable.
-- Deploy updated `admin-panel/` to Vercel.
-- Update `pos-dashboard` frontend to include `X-API-Key` header in API calls.
-- Share API key with .NET POS integration developers.
+- **Tiered Dashboard Implementation (3 Phases):**
+  - Phase 1: Database & API Updates (Adding mock data or new schema for products/cashiers, updating tier restrictions in API).
+  - Phase 2: POS Dashboard HTML/CSS Updates (Creating tier-specific layouts, charts, and tables).
+  - Phase 3: POS Dashboard JS Integration (Rendering correct components based on `license_tier` and resolving the 'loading' state bug for lower tiers).
+- Implement Supabase JWT/Auth for dashboard endpoints (future security enhancement).
 
 ## Active Decisions and Considerations
 - Using a static HTML approach for the main marketing site for optimal performance.
