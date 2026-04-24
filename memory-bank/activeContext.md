@@ -1,10 +1,21 @@
 # Active Context
 
 ## Current Work Focus
-- Building the POS Dashboard API (`pos-api/`) for `restoran.eayazilim.tr` — a Node.js serverless backend on Vercel that provides restaurant-specific analytics (daily/monthly revenue, average ticket size, recent transactions).
+- Implementing Tiered Licensing System across Database, API, and Admin Panel.
+- Phases 1 (DB schema) and 2 (API middleware) are complete. Phase 3 (Admin UI) is next.
+- The dashboard is a client-side static application that consumes the `pos-api` analytics.
 - The API uses Supabase (service_role key) as its data layer with `businesses` and `transactions` tables.
 
 ## Recent Changes
+- **POS API Production Upgrade (completed):**
+  - Phase 1: Added Zod input validation to `/api/transaction`
+  - Phase 2: Created Winston logger with custom Supabase transport (`system_logs` table)
+  - Phase 3: Built Admin Business Management page (`BusinessManagement.jsx`) with secure ID generation
+  - Phase 4: Added API Key middleware (`withApiKey`) protecting both endpoints
+- **Tiered Licensing System (in progress):**
+  - Phase 1 (DB): Added `is_licensed`, `license_tier`, `license_expires_at` columns to `businesses` table. Added super_admin UPDATE policy.
+  - Phase 2 (API): Created `withLicenseCheck` middleware. Chain order: `withApiKey → withLicenseCheck → handler`. Added tier-based dashboard data restrictions (basic=daily only, pro=monthly, enterprise=full). Removed inline business checks from handlers.
+- Previous: Updated contact info, legal pages, landing page design, admin panel with RBAC, POS Dashboard API and frontend.
 - Updated contact and address info to '+90 541 554 75 47' and 'Manisa/Şehzadeler'.
 - Created and linked legal pages (`kullanim-kosullari.html`, `gizlilik-politikasi.html`, `iade-politikasi.html`, `kvkk-aydinlatma-metni.html`).
 - Set up and styled the landing page using Tailwind CSS v4.
@@ -20,15 +31,20 @@
 - Switched pricing model from one-time fees to annual rates + VAT, with improved layout.
 - Added annual/monthly pricing toggle with pill-style UI and micro-animations.
 - Updated FAQ section with 4 new professional Q&As and smooth accordion animations.
-- Created POS Dashboard API (`pos-api/`) as Vercel Serverless Functions with `POST /api/transaction` (with duplicate detection) and `GET /api/dashboard-stats/[businessId]` endpoints.
+- Created POS Dashboard API (`pos-api/`) as Vercel Serverless Functions.
+- Built the Business Owner Dashboard (`pos-dashboard/`) for `restoran.eayazilim.tr` with dark-mode UI and real-time stats.
 - Extended Supabase schema with `businesses` and `transactions` tables (Phase 4).
 
 ## Next Steps
-- Deploy `pos-api/` to Vercel and configure environment variables (SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY).
-- Run the Phase 4 SQL schema in Supabase SQL Editor to create `businesses` and `transactions` tables.
-- Seed a test business and verify API endpoints with `curl`.
-- Build the frontend dashboard for `restoran.eayazilim.tr`.
-- Verify domain connection (`admin.eayazilim.tr`) to Vercel.
+- **Phase 3 (Admin UI):** Update `BusinessManagement.jsx` with:
+  - Tier badges (gold=Enterprise, blue=Pro, gray=Basic) and license status badges (green/red) in table
+  - Tier dropdown + license toggle in create modal
+  - Edit modal for existing businesses with "1 Yıl Uzat" (Extend 1 Year) button
+  - Supporting CSS: toggle switch, form-select, tier/status badge styles
+- Deploy updated `pos-api/` to Vercel with `POS_API_KEY` environment variable.
+- Deploy updated `admin-panel/` to Vercel.
+- Update `pos-dashboard` frontend to include `X-API-Key` header in API calls.
+- Share API key with .NET POS integration developers.
 
 ## Active Decisions and Considerations
 - Using a static HTML approach for the main marketing site for optimal performance.

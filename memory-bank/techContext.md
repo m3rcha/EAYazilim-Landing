@@ -18,4 +18,16 @@
 - `autoprefixer`: ^10.5.0
 - `postcss`: ^8.5.10
 - `tailwindcss`: ^4.2.4
-*(All listed under devDependencies in `package.json`)*
+*(All listed under devDependencies in root `package.json`)*
+
+## POS API Dependencies (`pos-api/package.json`)
+- `@supabase/supabase-js`: ^2.49.0
+- `winston`: ^3.17.0
+- `zod`: ^3.24.0
+
+## Admin Panel Dependencies (`admin-panel/package.json`)
+- `@supabase/supabase-js`: ^2.104.1
+- `lucide-react`: ^1.9.0
+- `react`: ^19.2.5
+- `react-router-dom`: ^7.14.2
+- `vite`: ^8.0.10

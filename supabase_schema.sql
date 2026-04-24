@@ -142,3 +142,58 @@ CREATE INDEX idx_transactions_duplicate_check
 -- =========================================================================================
 -- INSERT INTO public.businesses (business_id, name)
 -- VALUES ('KAFE-XK7R9M', 'Test Kafe');
+
+
+-- =========================================================================================
+-- Centralized Logging - Schema (Phase 5)
+-- Table: system_logs
+-- =========================================================================================
+
+-- 5. Create System Logs Table (Centralized Error Logging)
+CREATE TABLE public.system_logs (
+    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    level TEXT NOT NULL CHECK (level IN ('error', 'warn', 'info')),
+    message TEXT NOT NULL,
+    meta JSONB DEFAULT '{}',
+    source TEXT DEFAULT 'pos-api',
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
+);
+
+-- Enable RLS on System Logs
+ALTER TABLE public.system_logs ENABLE ROW LEVEL SECURITY;
+
+-- Service role: full access (API server writes logs)
+CREATE POLICY "Allow service_role full access to system_logs"
+    ON public.system_logs FOR ALL TO service_role
+    USING (true) WITH CHECK (true);
+
+-- Authenticated admins: read-only (for future admin log viewer)
+CREATE POLICY "Allow authenticated read system_logs"
+    ON public.system_logs FOR SELECT TO authenticated
+    USING (true);
+
+-- Performance Indexes
+CREATE INDEX idx_system_logs_created_at ON public.system_logs(created_at DESC);
+CREATE INDEX idx_system_logs_level ON public.system_logs(level);
+
+
+-- =========================================================================================
+-- Tiered Licensing System - Schema (Phase 6)
+-- Adds licensing columns to businesses table
+-- =========================================================================================
+
+-- 6. Add Licensing Columns to Businesses Table
+ALTER TABLE public.businesses
+  ADD COLUMN is_licensed BOOLEAN DEFAULT true,
+  ADD COLUMN license_tier TEXT DEFAULT 'basic'
+    CHECK (license_tier IN ('basic', 'pro', 'enterprise')),
+  ADD COLUMN license_expires_at TIMESTAMP WITH TIME ZONE
+    DEFAULT (now() + INTERVAL '1 year');
+
+-- Allow super_admin to update businesses (license management)
+CREATE POLICY "Allow super_admin update businesses"
+    ON public.businesses FOR UPDATE TO authenticated
+    USING (true)
+    WITH CHECK (
+        (SELECT role FROM public.admin_roles WHERE user_id = auth.uid()) = 'super_admin'
+    );
