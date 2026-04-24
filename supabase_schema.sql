@@ -40,6 +40,7 @@ CREATE POLICY "Allow authenticated full access to contacts"
 -- 2. Create Admin Roles Table (For RBAC)
 CREATE TABLE public.admin_roles (
     user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE PRIMARY KEY,
+    email TEXT,
     role TEXT NOT NULL CHECK (role IN ('super_admin', 'admin')),
     force_password_reset BOOLEAN DEFAULT true,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
