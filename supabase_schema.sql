@@ -28,13 +28,19 @@ CREATE POLICY "Allow anonymous insert to contacts"
     TO anon
     WITH CHECK (true);
 
--- Allow authenticated users (admins) to SELECT and UPDATE contacts
-CREATE POLICY "Allow authenticated full access to contacts"
-    ON public.contacts
-    FOR ALL
-    TO authenticated
-    USING (true)
-    WITH CHECK (true);
+-- Allow authenticated admins to SELECT and UPDATE (is_read) contacts
+CREATE POLICY "Allow admin read contacts"
+    ON public.contacts FOR SELECT TO authenticated
+    USING (true);
+
+CREATE POLICY "Allow admin update contacts"
+    ON public.contacts FOR UPDATE TO authenticated
+    USING (true) WITH CHECK (true);
+
+-- Allow super_admin only to delete contacts
+CREATE POLICY "Allow super_admin delete contacts"
+    ON public.contacts FOR DELETE TO authenticated
+    USING ( (SELECT role FROM public.admin_roles WHERE user_id = auth.uid()) = 'super_admin' );
 
 
 -- 2. Create Admin Roles Table (For RBAC)
@@ -49,12 +55,12 @@ CREATE TABLE public.admin_roles (
 -- Enable RLS on Admin Roles
 ALTER TABLE public.admin_roles ENABLE ROW LEVEL SECURITY;
 
--- Only authenticated admins can read the roles table
+-- Admins can read their own role, super_admin can read all
 CREATE POLICY "Allow authenticated read admin_roles"
     ON public.admin_roles
     FOR SELECT
     TO authenticated
-    USING (true);
+    USING ( user_id = auth.uid() OR (SELECT role FROM public.admin_roles WHERE user_id = auth.uid()) = 'super_admin' );
 
 -- Only super_admin can insert admin_roles
 CREATE POLICY "Allow super_admin insert admin_roles"
@@ -63,13 +69,21 @@ CREATE POLICY "Allow super_admin insert admin_roles"
     TO authenticated
     WITH CHECK ( (SELECT role FROM public.admin_roles WHERE user_id = auth.uid()) = 'super_admin' );
 
--- Only super_admin can update admin_roles
+-- Only super_admin can update admin_roles (preventing self-update of force_password_reset by regular admins)
 CREATE POLICY "Allow super_admin update admin_roles"
     ON public.admin_roles
     FOR UPDATE
     TO authenticated
     USING ( (SELECT role FROM public.admin_roles WHERE user_id = auth.uid()) = 'super_admin' )
     WITH CHECK ( (SELECT role FROM public.admin_roles WHERE user_id = auth.uid()) = 'super_admin' );
+
+-- Regular admins can update their own force_password_reset flag ONLY
+CREATE POLICY "Allow admin self update force_password_reset"
+    ON public.admin_roles
+    FOR UPDATE
+    TO authenticated
+    USING ( user_id = auth.uid() )
+    WITH CHECK ( user_id = auth.uid() );
 
 -- Only super_admin can delete admin_roles
 CREATE POLICY "Allow super_admin delete admin_roles"
@@ -93,6 +107,7 @@ CREATE TABLE public.businesses (
     business_id TEXT PRIMARY KEY,
     name TEXT NOT NULL,
     email TEXT,
+    pin_hash TEXT,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
 );
 
