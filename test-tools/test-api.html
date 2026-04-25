@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test Aracı - EA Yazılım</title>
+    <style>
+        body { font-family: system-ui, -apple-system, sans-serif; padding: 2rem; max-width: 800px; margin: 0 auto; background: #f4f7f6; }
+        .card { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .form-group { margin-bottom: 1rem; }
+        label { display: block; font-weight: bold; margin-bottom: 0.5rem; }
+        input, textarea, select { width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-family: monospace; }
+        textarea { height: 150px; }
+        button { padding: 0.75rem 1.5rem; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        button:hover { background: #0056b3; }
+        #response { margin-top: 2rem; padding: 1rem; background: #222; color: #0f0; border-radius: 4px; white-space: pre-wrap; font-family: monospace; overflow-x: auto; min-height: 100px; }
+        .error { color: #ff4444; }
+        .row { display: flex; gap: 1rem; }
+        .row > div { flex: 1; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>EA Yazılım API Test Aracı</h1>
+        
+        <div class="row">
+            <div class="form-group">
+                <label>API Base URL</label>
+                <input type="text" id="api-base" value="https://pos-api-beige.vercel.app">
+            </div>
+            <div class="form-group">
+                <label>Endpoint</label>
+                <input type="text" id="api-endpoint" value="/api/transaction">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>API Key (x-api-key)</label>
+            <input type="text" id="api-key" value="d68fa99f23662c9ea6564dff341bbdc4ff90a1714110fb4d5cce3bd402f5f76f">
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <label>Method</label>
+                <select id="api-method">
+                    <option value="POST">POST</option>
+                    <option value="GET">GET</option>
+                    <option value="OPTIONS">OPTIONS</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group" id="payload-container">
+            <label>JSON Payload (Body)</label>
+            <textarea id="api-payload">{
+  "id": "Örnek-UUID-Buraya",
+  "business_id": "KAFE-XK7R9M",
+  "device_id": "DEMO-POS-1",
+  "amount": 125.50,
+  "status": "completed"
+}</textarea>
+            <button type="button" onclick="generateId()" style="margin-top: 0.5rem; background: #6c757d; font-size: 0.8rem;">Yeni UUID Oluştur</button>
+        </div>
+
+        <button onclick="runTest()">İsteği Gönder</button>
+
+        <h3>Sunucu Yanıtı:</h3>
+        <div id="response">Henüz istek gönderilmedi...</div>
+    </div>
+
+    <script>
+        function generateUUID() {
+            if (typeof crypto.randomUUID === 'function') return crypto.randomUUID();
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+        }
+
+        function generateId() {
+            try {
+                const payload = JSON.parse(document.getElementById('api-payload').value);
+                payload.id = generateUUID();
+                document.getElementById('api-payload').value = JSON.stringify(payload, null, 2);
+            } catch (e) {
+                alert('JSON formatı geçersiz, ID eklenemedi.');
+            }
+        }
+
+        // Initialize with a real UUID
+        document.getElementById('api-payload').value = JSON.stringify({
+            id: generateUUID(),
+            business_id: "KAFE-XK7R9M",
+            device_id: "DEMO-POS-1",
+            amount: 125.50,
+            status: "completed"
+        }, null, 2);
+
+        async function runTest() {
+            const baseUrl = document.getElementById('api-base').value.trim();
+            const endpoint = document.getElementById('api-endpoint').value.trim();
+            const apiKey = document.getElementById('api-key').value.trim();
+            const method = document.getElementById('api-method').value;
+            const payloadStr = document.getElementById('api-payload').value.trim();
+            const responseDiv = document.getElementById('response');
+
+            responseDiv.textContent = 'İstek gönderiliyor...';
+            responseDiv.className = '';
+
+            try {
+                const options = {
+                    method: method,
+                    headers: {
+                        'x-api-key': apiKey
+                    }
+                };
+
+                if (method !== 'GET' && payloadStr) {
+                    options.headers['Content-Type'] = 'application/json';
+                    options.body = payloadStr;
+                }
+
+                const startTime = Date.now();
+                const response = await fetch(`${baseUrl}${endpoint}`, options);
+                const duration = Date.now() - startTime;
+                
+                const data = await response.json();
+                
+                responseDiv.textContent = `Durum: ${response.status} ${response.statusText} (${duration}ms)\n\n` + 
+                                       JSON.stringify(data, null, 2);
+                
+                if (!response.ok) {
+                    responseDiv.classList.add('error');
+                }
+            } catch (err) {
+                responseDiv.textContent = 'Hata: ' + err.message;
+                responseDiv.classList.add('error');
+            }
+        }
+    </script>
+</body>
+</html>
