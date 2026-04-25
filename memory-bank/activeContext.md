@@ -41,6 +41,7 @@
   - Integrated `bcryptjs` for hashing PINs before storing them in the database.
 - **Transaction Integrity (completed):**
   - Shifted from 60-second time-based duplicate detection to **Primary Key (id)** based detection using **UUIDs**.
+  - Implemented **Idempotent** behavior: If a duplicate `id` is submitted, the API returns `200 OK` instead of an error, ensuring POS systems don't get stuck in retry loops.
   - The API now enforces that the `id` field in the payload is a valid UUID string (validated via Zod).
   - This ensures global uniqueness and prevents duplicate submissions by leveraging the database's primary key constraints.
 

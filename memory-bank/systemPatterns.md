@@ -32,7 +32,7 @@
 - **Tier-based dashboard restrictions**: `basic` = daily stats + 5 recent, `pro` = daily + monthly + 10 recent, `enterprise` = full data including average ticket size.
 - **Centralized logging**: Winston logger with custom Supabase transport writes errors/warnings to `system_logs` table.
 - **Input validation**: Zod schema validation on `/api/transaction` with `z.coerce.number()` for .NET client compatibility.
-- **Duplicate Detection**: `POST /api/transaction` uses a client-provided `id` (must be a valid **UUID**) to prevent duplicate submissions. This ID maps directly to the primary key of the `transactions` table.
+- **Duplicate Detection**: `POST /api/transaction` is **idempotent**. If a client-provided `id` (UUID) already exists, it returns `200 OK` as if successful. This prevents POS systems from retrying indefinitely.
 - **Security MVP**: Dashboard access controlled via complex, 12-character `business_id` codes (format: `XXXX-XXXX-XXXX`) and 6-digit hashed PINs.
 - Businesses are managed via the Admin Panel (`/businesses` page) with auto-generated secure IDs and PINs.
 - `transactions` table uses a **UUID** as its primary key to naturally enforce data integrity and global uniqueness.

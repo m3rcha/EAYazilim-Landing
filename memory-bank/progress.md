@@ -39,6 +39,7 @@
 - Phase 14 (Transaction Integrity):
   - Removed time-based duplicate detection (60s window).
   - Enforced use of **UUID** for the `id` column in the `transactions` table.
+  - Implemented **Idempotent** success responses (`200 OK`) for duplicate `id` submissions.
   - Implemented strict UUID validation in `POST /api/transaction` via Zod (`z.string().uuid()`).
   - Updated `demo-pos.html` to generate valid UUIDs for testing using `crypto.randomUUID()`.
 
