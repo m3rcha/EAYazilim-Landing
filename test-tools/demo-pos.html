@@ -359,8 +359,13 @@
             payBtn.disabled = true;
 
             try {
-                // Generate a valid UUID for transaction identification
-                const txnId = crypto.randomUUID();
+                // Generate a valid UUID (with fallback for insecure file:// contexts)
+                const txnId = (typeof crypto.randomUUID === 'function') 
+                    ? crypto.randomUUID() 
+                    : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                        const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+                        return v.toString(16);
+                    });
 
                 const payload = {
                     id: txnId,
@@ -382,7 +387,10 @@
                 const data = await response.json();
 
                 if (!response.ok) {
-                    throw new Error(data.message || data.error || 'İşlem başarısız');
+                    const errorMsg = data.details 
+                        ? Object.entries(data.details).map(([field, msgs]) => `${field}: ${msgs.join(', ')}`).join(' | ')
+                        : (data.message || data.error || 'İşlem başarısız');
+                    throw new Error(errorMsg);
                 }
 
                 showStatus(`İşlem Başarılı! (Tutar: ${currentAmount} ₺)`);
