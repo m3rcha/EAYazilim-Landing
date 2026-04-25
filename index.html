@@ -227,413 +227,233 @@
         <section id="paketler" class="py-24 bg-gray-50 border-t border-gray-100">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 mb-4">Sade ve Şeffaf Çözümler
-                    </h2>
-                    <p class="text-lg text-gray-500 font-medium">İşletmenizin ihtiyacına en uygun paketi seçin.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 mb-4">Sade ve Şeffaf Fiyatlandırma</h2>
+                    <p class="text-lg text-gray-500 font-medium">İhtiyacınıza göre şekillenen esnek çözümler.</p>
 
                     <!-- Pricing Toggle -->
                     <div id="pricing-toggle" style="display:inline-flex;align-items:center;margin-top:2rem;background:#f3f4f6;border-radius:9999px;padding:4px;border:1px solid #e5e7eb;cursor:pointer;user-select:none;">
-                        <span id="toggle-monthly" style="padding:0.5rem 1.5rem;border-radius:9999px;font-size:0.875rem;font-weight:500;color:#6b7280;transition:all 0.3s ease;">Aylık</span>
-                        <span id="toggle-annual" style="padding:0.5rem 1.5rem;border-radius:9999px;font-size:0.875rem;font-weight:600;color:#fff;background:linear-gradient(to right,#3b82f6,#1d4ed8);box-shadow:0 1px 3px rgba(0,0,0,0.15);transition:all 0.3s ease;">Yıllık</span>
+                        <span id="toggle-monthly" style="padding:0.5rem 1.5rem;border-radius:9999px;font-size:0.875rem;font-weight:600;color:#fff;background:linear-gradient(to right,#3b82f6,#1d4ed8);box-shadow:0 1px 3px rgba(0,0,0,0.15);transition:all 0.3s ease;">Aylık</span>
+                        <span id="toggle-annual" style="padding:0.5rem 1.5rem;border-radius:9999px;font-size:0.875rem;font-weight:500;color:#6b7280;background:none;box-shadow:none;transition:all 0.3s ease;cursor:pointer;">Yıllık</span>
                     </div>
                     <div style="margin-top:0.5rem;">
-                        <span id="savings-badge" style="display:inline-flex;align-items:center;padding:0.25rem 0.75rem;border-radius:9999px;font-size:0.75rem;font-weight:700;color:#15803d;background:#f0fdf4;border:1px solid #bbf7d0;">%17'ye varan tasarruf</span>
+                        <span id="savings-badge" style="display:inline-flex;align-items:center;padding:0.25rem 0.75rem;border-radius:9999px;font-size:0.75rem;font-weight:700;color:#15803d;background:#f0fdf4;border:1px solid #bbf7d0;opacity:0;">2 ay ücretsiz</span>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto items-start">
-                    <!-- Paket 1 -->
-                    <div
-                        class="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
-                        <div class="mb-6">
-                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Başlangıç</h3>
-                            <p class="text-gray-500 font-medium text-sm h-10">Küçük kafeler, butikler ve tek kasalı
-                                işletmeler için.</p>
+                <!-- Base Package Card -->
+                <div class="max-w-2xl mx-auto mb-16">
+                    <div class="bg-white rounded-3xl p-8 md:p-10 shadow-lg border-2 border-blue-500 relative hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-300">
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-blue-500 to-blue-700 text-white px-5 py-1.5 rounded-full text-xs font-bold tracking-wide shadow-md uppercase">
+                            Başlangıç Paketi
                         </div>
-                        <div class="mb-8">
-                            <div class="flex items-end gap-1 mb-1">
-                                <span class="text-4xl font-extrabold text-gray-900 price-amount" data-annual="8.500₺" data-monthly="850₺">8.500₺</span>
-                                <span class="text-gray-500 font-medium pb-1 price-period">/yıllık</span>
+                        <div class="mb-8 mt-4 text-center">
+                            <div class="flex items-end justify-center gap-1 mb-1">
+                                <span class="text-5xl font-extrabold text-gray-900 price-amount" data-annual="9.000₺" data-monthly="900₺">900₺</span>
+                                <span class="text-gray-500 font-medium pb-1 price-period">/aylık</span>
                             </div>
                             <p class="text-sm text-gray-400 font-medium">+ KDV</p>
                         </div>
-                        <div class="mb-10">
-                            <p class="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4">Paket İçeriği</p>
-                            <ul class="space-y-4">
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">1 Bilgisayar POS Yazılımı</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">1 Bilgisayar Kullanımı</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Sınırsız Sipariş</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Sipariş Yönetimi</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Stok ve Maliyet Yönetimi</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Yazarkasa Entegrasyonları</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Otomatik Yazılım
-                                        Güncellemesi</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Canlı Destek</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Paket 2 -->
-                    <div
-                        class="bg-white rounded-3xl p-8 md:p-10 shadow-xl shadow-blue-900/5 border-2 border-blue-500 relative hover:shadow-2xl hover:shadow-blue-900/10 hover:-translate-y-2 transition-all duration-300 flex flex-col md:-mt-4">
-                        <div
-                            class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-blue-500 to-blue-700 text-white px-5 py-1.5 rounded-full text-xs font-bold tracking-wide shadow-md uppercase">
-                            En Çok Tercih Edilen
-                        </div>
-                        <div class="mb-6 mt-2">
-                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Pro</h3>
-                            <p class="text-gray-500 font-medium text-sm h-10">Orta ölçekli restoranlar ve çok kasalı
-                                yerel marketler.</p>
-                        </div>
                         <div class="mb-8">
-                            <div class="flex items-end gap-1 mb-1">
-                                <span class="text-4xl font-extrabold text-gray-900 price-amount" data-annual="17.500₺" data-monthly="1.750₺">17.500₺</span>
-                                <span class="text-gray-500 font-medium pb-1 price-period">/yıllık</span>
+                            <p class="text-sm font-bold text-gray-900 uppercase tracking-wider mb-6">Başlangıç Paketi İçeriği</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <ul class="space-y-3">
+                                    <li class="flex items-start gap-3">
+                                        <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span class="text-gray-700 font-medium text-sm">Sınırsız Sipariş İşleme</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span class="text-gray-700 font-medium text-sm">Sipariş Yönetimi</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span class="text-gray-700 font-medium text-sm">1 Kasa</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span class="text-gray-700 font-medium text-sm">İşletme Paneli (Temel)</span>
+                                    </li>
+                                </ul>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start gap-3">
+                                        <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span class="text-gray-700 font-medium text-sm">Yedekleme ve Senkronizasyon</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span class="text-gray-700 font-medium text-sm">Canlı Destek</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span class="text-gray-700 font-medium text-sm">Online Kurulum Desteği</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span class="text-gray-700 font-medium text-sm">Otomatik Yazılım Güncellemeleri</span>
+                                    </li>
+                                </ul>
                             </div>
-                            <p class="text-sm text-gray-400 font-medium">+ KDV</p>
-                        </div>
-                        <div class="mb-10">
-                            <p class="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4">Paket İçeriği</p>
-                            <ul class="space-y-4">
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">3 Bilgisayar POS Yazılımı</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">3 Bilgisayar Kullanımı</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Sınırsız Sipariş</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Sipariş Yönetimi</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Stok ve Maliyet Yönetimi</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Mobil Uygulamalar</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Mutfak Ekranı</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Marş Sistemi</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">QR Menü</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Gelişmiş Raporlama ve
-                                        Analiz</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Yazarkasa Entegrasyonları</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Otomatik Yazılım
-                                        Güncellemesi</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Canlı Destek</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Paket 3 -->
-                    <div
-                        class="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
-                        <div class="mb-6">
-                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Enterprise</h3>
-                            <p class="text-gray-500 font-medium text-sm h-10">Büyük restoran zincirleri ve paket servis
-                                ağları için.</p>
-                        </div>
-                        <div class="mb-8">
-                            <div class="flex items-end gap-1 mb-1">
-                                <span class="text-4xl font-extrabold text-gray-900 price-amount" data-annual="35.000₺" data-monthly="3.500₺">35.000₺</span>
-                                <span class="text-gray-500 font-medium pb-1 price-period">/yıllık</span>
-                            </div>
-                            <p class="text-sm text-gray-400 font-medium price-subtext" data-annual="+ KDV'den başlayan fiyatlarla" data-monthly="+ KDV'den başlayan fiyatlarla">+ KDV'den başlayan fiyatlarla</p>
-                        </div>
-                        <div class="mb-10">
-                            <p class="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4">Paket İçeriği</p>
-                            <ul class="space-y-4">
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Sınırsız Bilgisayar ve Online
-                                        Entegrasyon</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Sınırsız Bilgisayar
-                                        Kullanımı</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Sınırsız Kullanıcı</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Sınırsız Sipariş</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Sipariş Yönetimi</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Stok ve Maliyet Yönetimi</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Mobil Uygulamalar</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Mutfak Ekranı</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Marş Sistemi</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">QR Menü</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Gelişmiş Raporlama ve
-                                        Analiz</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Paket Entegrasyonları <span
-                                            class="text-gray-400 text-sm">(Online Yemek Platformları)</span></span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Yapay Zeka ile Rapor
-                                        Analizi</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Memnuniyet Anketi</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Online Kurulum Eğitimi</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Yazarkasa Entegrasyonları</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Otomatik Yazılım
-                                        Güncellemesi</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span class="text-gray-700 font-medium text-base">Canlı Destek</span>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>
 
+                <!-- Add-on Features -->
+                <div class="text-center mb-10">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">İsteğe Bağlı Ek Modüller</h3>
+                    <p class="text-gray-500 font-medium">İşletmenizin ihtiyaçlarına göre ekleyin.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                    <!-- Add-on 1 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-blue-200 transition-all duration-300">
+                        <div class="flex items-start justify-between mb-3">
+                            <h4 class="font-bold text-gray-900 text-base">Ek Kasa</h4>
+                            <span class="text-blue-600 font-extrabold text-lg addon-price" data-monthly="+50₺" data-annual="+50₺">+50₺</span>
+                        </div>
+                        <p class="text-gray-500 text-sm font-medium">Kasa başına aylık ücret</p>
+                    </div>
+
+                    <!-- Add-on 2 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-blue-200 transition-all duration-300">
+                        <div class="flex items-start justify-between mb-3">
+                            <h4 class="font-bold text-gray-900 text-base">Garson Mobil Uygulaması</h4>
+                            <span class="text-blue-600 font-extrabold text-lg addon-price" data-monthly="+300₺" data-annual="+300₺">+300₺</span>
+                        </div>
+                        <p class="text-gray-500 text-sm font-medium">Aylık ücret</p>
+                    </div>
+
+                    <!-- Add-on 3 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-blue-200 transition-all duration-300">
+                        <div class="flex items-start justify-between mb-3">
+                            <h4 class="font-bold text-gray-900 text-base">Mutfak Ekranı</h4>
+                            <span class="text-blue-600 font-extrabold text-lg addon-price" data-monthly="+200₺" data-annual="+200₺">+200₺</span>
+                        </div>
+                        <p class="text-gray-500 text-sm font-medium">Aylık ücret</p>
+                    </div>
+
+                    <!-- Add-on 4 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-blue-200 transition-all duration-300">
+                        <div class="flex items-start justify-between mb-3">
+                            <h4 class="font-bold text-gray-900 text-base">Stok ve Maliyet Yönetimi</h4>
+                            <span class="text-blue-600 font-extrabold text-lg addon-price" data-monthly="+400₺" data-annual="+400₺">+400₺</span>
+                        </div>
+                        <p class="text-gray-500 text-sm font-medium">Aylık ücret</p>
+                    </div>
+
+                    <!-- Add-on 5 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-blue-200 transition-all duration-300">
+                        <div class="flex items-start justify-between mb-3">
+                            <h4 class="font-bold text-gray-900 text-base">Gelişmiş İşletme Paneli</h4>
+                            <span class="text-blue-600 font-extrabold text-lg addon-price" data-monthly="+100₺" data-annual="+100₺">+100₺</span>
+                        </div>
+                        <p class="text-gray-500 text-sm font-medium">Aylık ücret</p>
+                    </div>
+
+                    <!-- Add-on 6 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-blue-200 transition-all duration-300">
+                        <div class="flex items-start justify-between mb-3">
+                            <h4 class="font-bold text-gray-900 text-base">Yapay Zeka ile Rapor Analizi</h4>
+                            <span class="text-blue-600 font-extrabold text-lg addon-price" data-monthly="+300₺" data-annual="+300₺">+300₺</span>
+                        </div>
+                        <p class="text-gray-500 text-sm font-medium">Aylık ücret</p>
+                    </div>
+
+                    <!-- Add-on 7 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-blue-200 transition-all duration-300">
+                        <div class="flex items-start justify-between mb-3">
+                            <h4 class="font-bold text-gray-900 text-base">QR Menü</h4>
+                            <span class="text-blue-600 font-extrabold text-lg addon-price" data-monthly="+50₺" data-annual="+50₺">+50₺</span>
+                        </div>
+                        <p class="text-gray-500 text-sm font-medium">Aylık ücret</p>
+                    </div>
+
+                    <!-- Add-on 8 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-blue-200 transition-all duration-300">
+                        <div class="flex items-start justify-between mb-3">
+                            <h4 class="font-bold text-gray-900 text-base">Memnuniyet Anketi</h4>
+                            <span class="text-blue-600 font-extrabold text-lg addon-price" data-monthly="+50₺" data-annual="+50₺">+50₺</span>
+                        </div>
+                        <p class="text-gray-500 text-sm font-medium">Aylık ücret</p>
+                    </div>
+
+                    <!-- Add-on 9 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-blue-200 transition-all duration-300">
+                        <div class="flex items-start justify-between mb-3">
+                            <h4 class="font-bold text-gray-900 text-base">Paket Entegrasyonları</h4>
+                            <span class="text-blue-600 font-extrabold text-lg addon-price" data-monthly="+500₺" data-annual="+500₺">+500₺</span>
+                        </div>
+                        <p class="text-gray-500 text-sm font-medium">Aylık ücret</p>
+                    </div>
+
+                    <!-- Add-on 10 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-blue-200 transition-all duration-300">
+                        <div class="flex items-start justify-between mb-3">
+                            <h4 class="font-bold text-gray-900 text-base">POS Sistem Entegrasyonları</h4>
+                            <span class="text-blue-600 font-extrabold text-lg addon-price" data-monthly="+250₺" data-annual="+250₺">+250₺</span>
+                        </div>
+                        <p class="text-gray-500 text-sm font-medium">Aylık ücret (GMP3 hariç)</p>
+                    </div>
+
+                    <!-- Add-on 11 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-blue-200 transition-all duration-300">
+                        <div class="flex items-start justify-between mb-3">
+                            <h4 class="font-bold text-gray-900 text-base">Merkezi Yönetim ve Raporlama</h4>
+                            <span class="text-blue-600 font-extrabold text-lg addon-price" data-monthly="+750₺" data-annual="+750₺">+750₺</span>
+                        </div>
+                        <p class="text-gray-500 text-sm font-medium">Aylık ücret</p>
+                    </div>
+
+                    <!-- Add-on 12 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-blue-200 transition-all duration-300">
+                        <div class="flex items-start justify-between mb-3">
+                            <h4 class="font-bold text-gray-900 text-base">Şube Yönetimi</h4>
+                            <span class="text-blue-600 font-extrabold text-lg addon-price" data-monthly="+500₺" data-annual="+500₺">+500₺</span>
+                        </div>
+                        <p class="text-gray-500 text-sm font-medium">Aylık ücret</p>
+                    </div>
+
+                    <!-- Add-on 13 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-blue-200 transition-all duration-300">
+                        <div class="flex items-start justify-between mb-3">
+                            <h4 class="font-bold text-gray-900 text-base">Markaya Özel Geliştirmeler</h4>
+                            <span class="text-blue-600 font-extrabold text-lg">Proje Bazlı</span>
+                        </div>
+                        <p class="text-gray-500 text-sm font-medium">Fiyatlandırma proje kapsamına göre belirlenir</p>
+                    </div>
+
+                    <!-- Add-on 14 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-blue-200 transition-all duration-300">
+                        <div class="flex items-start justify-between mb-3">
+                            <h4 class="font-bold text-gray-900 text-base">Özel Destek Personeli</h4>
+                            <span class="text-blue-600 font-extrabold text-lg addon-price" data-monthly="+500₺" data-annual="+500₺">+500₺</span>
+                        </div>
+                        <p class="text-gray-500 text-sm font-medium">Aylık ücret</p>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="text-center mt-12">
+                    <p class="text-gray-500 font-medium mb-4">Hangi modüllerin size uygun olduğundan emin değil misiniz?</p>
+                    <a href="#iletisim" class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-gradient-to-r from-blue-600 to-blue-700 rounded-full shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 hover:-translate-y-1 transition-all duration-300">
+                        Ücretsiz Danışmanlık Alın
+                    </a>
+                </div>
 
             </div>
         </section>
@@ -810,8 +630,8 @@
                                     <select id="interested_package" required
                                         class="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors bg-white font-medium appearance-none">
                                         <option>Başlangıç Paketi</option>
-                                        <option>Pro Paketi</option>
-                                        <option>Enterprise Paketi</option>
+                                        <option>Başlangıç + Ek Modüller</option>
+                                        <option>Kurumsal Çözüm</option>
                                         <option>Sadece Bilgi Almak İstiyorum</option>
                                     </select>
                                     <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none">
@@ -941,14 +761,15 @@
             var savingsBadge = document.getElementById('savings-badge');
             var priceAmounts = document.querySelectorAll('.price-amount');
             var pricePeriods = document.querySelectorAll('.price-period');
-            var isAnnual = true;
+            var addonPrices = document.querySelectorAll('.addon-price');
+            var isAnnual = false;
 
             var activeStyle = 'padding:0.5rem 1.5rem;border-radius:9999px;font-size:0.875rem;font-weight:600;color:#fff;background:linear-gradient(to right,#3b82f6,#1d4ed8);box-shadow:0 1px 3px rgba(0,0,0,0.15);transition:all 0.3s ease;cursor:pointer;';
             var inactiveStyle = 'padding:0.5rem 1.5rem;border-radius:9999px;font-size:0.875rem;font-weight:500;color:#6b7280;background:none;box-shadow:none;transition:all 0.3s ease;cursor:pointer;';
 
             function updatePricing() {
                 var period = isAnnual ? 'annual' : 'monthly';
-                var periodLabel = isAnnual ? '/yıllık' : '/aylık';
+                var periodLabel = isAnnual ? '/yıllık (2 ay ücretsiz)' : '/aylık';
 
                 toggleAnnual.style.cssText = isAnnual ? activeStyle : inactiveStyle;
                 toggleMonthly.style.cssText = isAnnual ? inactiveStyle : activeStyle;
@@ -967,6 +788,16 @@
                 pricePeriods.forEach(function (el) {
                     el.textContent = periodLabel;
                 });
+
+                addonPrices.forEach(function (el) {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(4px)';
+                    setTimeout(function () {
+                        el.textContent = el.dataset[period];
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }, 150);
+                });
             }
 
             toggleMonthly.addEventListener('click', function () {
@@ -983,6 +814,9 @@
 
             // Add transition styles to price amounts
             priceAmounts.forEach(function (el) {
+                el.style.transition = 'opacity 0.15s ease, transform 0.15s ease';
+            });
+            addonPrices.forEach(function (el) {
                 el.style.transition = 'opacity 0.15s ease, transform 0.15s ease';
             });
 

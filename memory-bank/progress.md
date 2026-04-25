@@ -1,11 +1,11 @@
 # Progress
 
 ## What Works
-- Main landing page (`index.html`) is fully designed with Hero, Features, Sectors, Pricing, FAQ, and Contact sections.
+- Main landing page (`index.html`) is fully designed with Hero, Features, Solutions, Pricing (base + add-ons model), FAQ, and Contact sections.
 - All legal documentation pages are created and styled.
 - Tailwind CSS styling is fully configured and compiled.
 - Contact information: +90 541 554 75 47, Manisa/Şehzadeler.
-- Annual subscription pricing model (+VAT) is live.
+- Pricing model: Base subscription at 900₺/month (9,000₺/year with 2 months free) plus optional add-on modules.
 
 ## Completed Phases
 - Phase 1: Secure Form Submission endpoint & Database integration (Supabase/Serverless).
@@ -44,6 +44,12 @@
 - Phase 15 (Landing Page refinement):
   - Fixed navigation mismatch: Changed "Sektörler" label to "Çözümler" in Header and Footer.
   - Updated primary contact email to `bilgi@eayazilim.tr`.
+- Phase 16 (Pricing Model Restructure):
+  - Replaced 3-tier pricing (Başlangıç/Pro/Enterprise) with base subscription + add-ons model.
+  - Base price: 900₺/month or 9,000₺/year (2 months free).
+  - 14 add-on modules with individual pricing (extra registers, waiter app, kitchen display, inventory, AI analysis, QR menu, etc.).
+  - Created interactive pricing calculator in Admin Panel (`/pricing-calculator`) for customer communications.
+  - Added "Copy Summary" feature to quickly share price quotes.
 
 ## What's Left to Build
 - Implement email automation for "Send Monthly Statement" feature (Resend or Mailgun).

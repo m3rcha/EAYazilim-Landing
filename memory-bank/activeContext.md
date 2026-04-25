@@ -6,6 +6,12 @@
 - The dashboard is a client-side static application that consumes the `pos-api` analytics.
 - The API uses Supabase (service_role key) as its data layer with `businesses` and `transactions` tables.
 
+- **Pricing Model Restructure (completed):**
+  - Replaced 3-tier pricing (Başlangıç/Pro/Enterprise) with base subscription + add-ons model.
+  - Base price: 900₺/month or 9,000₺/year (2 months free).
+  - 14 add-on modules with individual pricing displayed on landing page.
+  - Created interactive pricing calculator in Admin Panel (`/pricing-calculator`) for customer communications.
+  - Updated contact form dropdown to reflect new pricing structure.
 - **Landing Page Updates (completed):**
   - Updated navigation labels from "Sektörler" to "Çözümler" to match the "Efficiency-Focused Digital Transformation" section content.
   - Updated contact email from `info@eayazilim.com` to `bilgi@eayazilim.tr` for consistency.
@@ -61,3 +67,4 @@
 - Using a static HTML approach for the main marketing site for optimal performance.
 - The Admin Panel uses a purely static React build communicating directly with Supabase via client-side requests.
 - Sensitive user creation logic in the Admin Panel is offloaded to a Supabase Edge Function to avoid exposing the `service_role` key.
+- Pricing model shifted from tiered packages to base + add-ons for greater flexibility and transparency.
