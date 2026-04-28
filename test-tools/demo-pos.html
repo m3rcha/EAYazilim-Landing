@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo POS Terminali</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --success: #10b981;
+            --danger: #ef4444;
+            --radius: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .pos-terminal {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            width: 100%;
+            max-width: 480px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .pos-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .pos-header h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .pos-header p {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .pos-body {
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text);
+            font-size: 1rem;
+            font-family: monospace;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+        }
+
+        .amount-display {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .amount-value {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--text);
+            letter-spacing: -1px;
+            font-variant-numeric: tabular-nums;
+            margin-bottom: 0.5rem;
+        }
+
+        .quick-amounts {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+        }
+
+        .quick-btn {
+            background: var(--card);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .quick-btn:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .pay-btn {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 1.25rem;
+            border-radius: 12px;
+            font-size: 1.125rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .pay-btn:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
+        }
+
+        .pay-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .status-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-align: center;
+            display: none;
+        }
+
+        .status-success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            display: block;
+        }
+
+        .status-error {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            display: block;
+        }
+
+        /* Loading spinner */
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            display: none;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="pos-terminal">
+        <div class="pos-header">
+            <h1>Demo POS Terminali</h1>
+            <p>Sistemi test etmek için örnek işlemler gönderin</p>
+        </div>
+
+        <div class="pos-body">
+            <div class="form-group">
+                <label class="form-label">İşletme ID (Business ID)</label>
+                <div style="display: flex; gap: 0.5rem;">
+                    <input type="text" id="business-id" class="form-input" placeholder="Örn: X1Y2-Z3W4-A5B6"
+                        autocomplete="off">
+                    <button onclick="checkLicense()" class="quick-btn" style="white-space: nowrap; font-size: 0.75rem;">Lisans Sorgula</button>
+                </div>
+                <div id="license-status" style="margin-top: 0.5rem; font-size: 0.75rem; display: none;"></div>
+            </div>
+
+            <div class="amount-display">
+                <div class="amount-value" id="display-amount">0.00 ₺</div>
+
+                <div class="quick-amounts">
+                    <button class="quick-btn" onclick="addAmount(50)">+50</button>
+                    <button class="quick-btn" onclick="addAmount(100)">+100</button>
+                    <button class="quick-btn" onclick="addAmount(250)">+250</button>
+                    <button class="quick-btn" onclick="clearAmount()">Sıfırla</button>
+                </div>
+            </div>
+
+            <button id="pay-btn" class="pay-btn" onclick="sendTransaction()">
+                <span id="btn-text">Ödemeyi Al</span>
+                <div id="btn-spinner" class="spinner"></div>
+            </button>
+
+            <div id="status-container" class="status-message"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'https://pos-api-beige.vercel.app';
+        const API_KEY = 'd68fa99f23662c9ea6564dff341bbdc4ff90a1714110fb4d5cce3bd402f5f76f';
+
+        let currentAmount = 0;
+
+        // Cihaz kimliğini localStorage'da tutalım veya oluşturalım
+        let deviceId = localStorage.getItem('demo_device_id');
+        if (!deviceId) {
+            deviceId = 'DEMO-POS-' + Math.floor(Math.random() * 10000);
+            localStorage.setItem('demo_device_id', deviceId);
+        }
+
+        // Önceki işletme ID'yi hatırla
+        const savedBizId = localStorage.getItem('demo_business_id');
+        if (savedBizId) {
+            document.getElementById('business-id').value = savedBizId;
+        }
+
+        function updateDisplay() {
+            document.getElementById('display-amount').textContent = currentAmount.toFixed(2) + ' ₺';
+            document.getElementById('pay-btn').disabled = currentAmount === 0;
+        }
+
+        function addAmount(val) {
+            currentAmount += val;
+            updateDisplay();
+        }
+
+        function clearAmount() {
+            currentAmount = 0;
+            updateDisplay();
+        }
+
+        function showStatus(message, isError = false) {
+            const container = document.getElementById('status-container');
+            container.textContent = message;
+            container.className = 'status-message ' + (isError ? 'status-error' : 'status-success');
+
+            // 5 saniye sonra gizle
+            setTimeout(() => {
+                container.className = 'status-message';
+            }, 5000);
+        }
+
+        async function checkLicense() {
+            const businessId = document.getElementById('business-id').value.trim();
+            const statusDiv = document.getElementById('license-status');
+
+            if (!businessId) {
+                showStatus('Lütfen bir İşletme ID girin.', true);
+                return;
+            }
+
+            statusDiv.style.display = 'block';
+            statusDiv.style.color = 'var(--text-muted)';
+            statusDiv.textContent = 'Sorgulanıyor...';
+
+            try {
+                const response = await fetch(`${API_BASE}/api/license?businessId=${businessId}`, {
+                    method: 'GET',
+                    headers: {
+                        'x-api-key': API_KEY
+                    }
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.business && data.business.is_licensed) {
+                    statusDiv.style.color = 'var(--success)';
+                    statusDiv.textContent = `✅ Lisans Aktif: ${data.business.name} (${data.business.license_tier})`;
+                    localStorage.setItem('demo_business_id', businessId);
+                } else {
+                    statusDiv.style.color = 'var(--danger)';
+                    statusDiv.textContent = `❌ Lisans Geçersiz: ${data.message || data.error}`;
+                }
+            } catch (err) {
+                statusDiv.style.color = 'var(--danger)';
+                statusDiv.textContent = `⚠️ Hata: ${err.message}`;
+            }
+        }
+
+        async function sendTransaction() {
+            const businessId = document.getElementById('business-id').value.trim();
+
+            if (!businessId) {
+                showStatus('Lütfen bir İşletme ID girin.', true);
+                return;
+            }
+
+            if (currentAmount <= 0) {
+                showStatus('Lütfen geçerli bir tutar girin.', true);
+                return;
+            }
+
+            // İşletme ID'yi hatırla
+            localStorage.setItem('demo_business_id', businessId);
+
+            const btnText = document.getElementById('btn-text');
+            const spinner = document.getElementById('btn-spinner');
+            const payBtn = document.getElementById('pay-btn');
+
+            // Loading state
+            btnText.style.display = 'none';
+            spinner.style.display = 'block';
+            payBtn.disabled = true;
+
+            try {
+                // Generate a valid UUID (with fallback for insecure file:// contexts)
+                const txnId = (typeof crypto.randomUUID === 'function') 
+                    ? crypto.randomUUID() 
+                    : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                        const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+                        return v.toString(16);
+                    });
+
+                const payload = {
+                    id: txnId,
+                    business_id: businessId,
+                    device_id: deviceId,
+                    amount: currentAmount,
+                    status: 'completed'
+                };
+
+                const response = await fetch(`${API_BASE}/api/transaction`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-api-key': API_KEY
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    const errorMsg = data.details 
+                        ? Object.entries(data.details).map(([field, msgs]) => `${field}: ${msgs.join(', ')}`).join(' | ')
+                        : (data.message || data.error || 'İşlem başarısız');
+                    throw new Error(errorMsg);
+                }
+
+                showStatus(`İşlem Başarılı! (Tutar: ${currentAmount} ₺)`);
+                clearAmount(); // Başarılı işlemden sonra sıfırla
+
+            } catch (err) {
+                showStatus(`Hata: ${err.message}`, true);
+            } finally {
+                // Reset loading state
+                btnText.style.display = 'block';
+                spinner.style.display = 'none';
+                updateDisplay(); // disabled durumunu miktara göre geri ayarlar
+            }
+        }
+
+        // İlk yüklemede butonu pasif yap
+        updateDisplay();
+    </script>
+</body>
+
+</html>
