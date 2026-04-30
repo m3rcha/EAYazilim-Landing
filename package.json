@@ -1,10 +1,11 @@
 {
   "name": "eayazilim",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "EA Yazilim Landing Page",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch",
+    "build": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --minify",
+    "start": "echo \"Static site - serve dist/ or root directory with any static server\""
   },
   "keywords": [],
   "author": "",
