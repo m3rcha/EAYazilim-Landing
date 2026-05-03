@@ -66,26 +66,23 @@
     }
 
     // Fetch sections
-    const sections = await supabaseFetch('page_sections', `page_slug=eq.${PAGE_SLUG}&is_active=eq.true&order=sort_order.asc`);
+    const sections = await supabaseFetch('page_sections', `page_slug=eq.${PAGE_SLUG}&is_active=eq.true&select=*&order=sort_order.asc`);
 
     // Fetch content items for all sections
     let allItems = [];
     if (sections && sections.length > 0) {
-      const sectionIds = sections.map(s => s.id);
-      const idsParam = sectionIds.map(id => `id.eq.${id}`).join(',');
-      allItems = await supabaseFetch('content_items', `section_id=in.(${idsParam})&is_active=eq.true&order=sort_order.asc`);
+      const sectionIds = sections.map(s => s.id).join(',');
+      allItems = await supabaseFetch('content_items', `section_id=in.(${sectionIds})&is_active=eq.true&select=*&order=sort_order.asc`);
     }
 
     // Fetch site settings
     const settings = await supabaseFetch('site_settings', 'select=*');
-    const settingsMap = {};
-    if (settings) settings.forEach(s => { settingsMap[s.key] = s.value; });
 
     // Fetch navigation
-    const navItems = await supabaseFetch('navigation', 'is_active=eq.true&order=location.asc,sort_order.asc');
+    const navItems = await supabaseFetch('navigation', 'is_active=eq.true&select=*&order=location.asc,sort_order.asc');
 
     // Fetch form options
-    const formOptions = await supabaseFetch('contact_form_options', 'is_active=eq.true&order=sort_order.asc');
+    const formOptions = await supabaseFetch('contact_form_options', 'is_active=eq.true&select=*&order=sort_order.asc');
 
     const data = { page, sections: sections || [], items: allItems || [], settings: settingsMap, navItems: navItems || [], formOptions: formOptions || [] };
     setCache(cacheKey, data);
