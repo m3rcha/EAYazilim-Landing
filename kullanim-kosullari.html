@@ -1,69 +1,146 @@
 <!DOCTYPE html>
 <html lang="tr" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kullanım Koşulları | EA Yazılım</title>
+    <title>Kullanım Koşulları — EA Yazılım</title>
+    <link rel="icon" type="image/svg+xml" href="./logo-square.svg">
+    <meta name="description" content="EA Yazılım hizmet ve kullanım koşulları. Web sitesi ve yazılım hizmetlerimizin kullanım şartları.">
     <link rel="stylesheet" href="./src/output.css">
 </head>
-<body class="bg-gray-50 text-gray-900 antialiased font-sans flex flex-col min-h-screen">
-    <header class="w-full bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100">
+
+<body class="bg-white text-gray-900 antialiased selection:bg-blue-500 selection:text-white flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="w-full bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="index.html" class="flex items-baseline gap-1 group">
-                <span class="text-4xl font-extrabold tracking-tight bg-gradient-to-br from-blue-500 to-blue-800 bg-clip-text text-transparent">EA</span>
-                <span class="text-2xl font-medium tracking-tight text-gray-500">yazılım</span>
+            <a href="index.html" class="flex items-center group">
+                <img src="./logo-horizontal.svg" alt="EA Yazılım" style="height: 36px; width: auto;">
             </a>
             <nav class="hidden md:flex items-center gap-8">
-                <a href="index.html#ozellikler" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Özellikler</a>
-                <a href="index.html#paketler" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Fiyatlandırma</a>
+                <a href="cozumler.html" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Çözümler</a>
+                <a href="fiyatlandirma.html" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Teklif Alın</a>
+                <a href="hakkimizda.html" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Hakkımızda</a>
             </nav>
-            <div>
-                <a href="index.html#iletisim" class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-gray-900 rounded-full hover:bg-gray-800 transition-all">İletişime Geç</a>
+            <div class="flex items-center gap-3">
+                <a href="iletisim.html" class="hidden sm:inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-gray-900 rounded-full hover:bg-gray-800 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">İletişime Geç</a>
+                <button id="menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors" aria-label="Menüyü aç">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
             </div>
         </div>
     </header>
 
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu fixed inset-y-0 right-0 w-80 max-w-full bg-white z-[60] shadow-2xl p-6">
+        <div class="flex justify-between items-center mb-8">
+            <img src="./logo-horizontal.svg" alt="EA Yazılım" style="height: 32px; width: auto;">
+            <button id="menu-close" class="p-2 rounded-lg hover:bg-gray-100 transition-colors" aria-label="Menüyü kapat">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+        <nav class="flex flex-col gap-2">
+            <a href="cozumler.html" class="px-4 py-3 rounded-xl text-base font-medium text-gray-700 hover:bg-gray-50 transition-colors">Çözümler</a>
+            <a href="fiyatlandirma.html" class="px-4 py-3 rounded-xl text-base font-medium text-gray-700 hover:bg-gray-50 transition-colors">Teklif Alın</a>
+            <a href="hakkimizda.html" class="px-4 py-3 rounded-xl text-base font-medium text-gray-700 hover:bg-gray-50 transition-colors">Hakkımızda</a>
+            <a href="iletisim.html" class="px-4 py-3 rounded-xl text-base font-medium text-gray-700 hover:bg-gray-50 transition-colors">İletişim</a>
+        </nav>
+    </div>
+    <div id="mobile-overlay" class="fixed inset-0 bg-black/20 z-[55] hidden"></div>
+
     <main class="flex-grow py-24">
         <div class="max-w-4xl mx-auto px-6">
-            <div class="bg-white p-10 md:p-14 rounded-3xl shadow-sm border border-gray-100">
-                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">EA Yazılım Hizmet ve Kullanım Koşulları</h1>
+            <div class="bg-white p-10 md:p-14 rounded-3xl border border-gray-100 shadow-sm">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Kullanım Koşulları</h1>
+                <p class="text-gray-400 text-sm font-medium mb-10">Son güncelleme: Mayıs 2026</p>
+
                 <div class="space-y-6 text-gray-600 leading-relaxed">
                     <p><strong>1. Taraflar</strong><br>
-                    İşbu sözleşme, pos ve otomasyon yazılımı hizmeti sunan EA Yazılım ("Hizmet Sağlayıcı") ile bu hizmetleri satın alan veya kullanan kişi/kurum ("Kullanıcı" veya "İşletme") arasında elektronik ortamda onaylanmasıyla yürürlüğe girmiştir.</p>
-                    
+                    İşbu sözleşme, web sitesi tasarım, geliştirme ve dijital çözüm hizmetleri sunan EA Yazılım A.Ş. ("Hizmet Sağlayıcı") ile bu hizmetleri satın alan veya kullanan kişi/kurum ("Kullanıcı" veya "İşletme") arasında elektronik ortamda onaylanmasıyla yürürlüğe girmiştir.</p>
+
                     <p><strong>2. Sözleşmenin Konusu</strong><br>
-                    Bu sözleşmenin konusu, Kullanıcı'nın EA Yazılım tarafından sağlanan POS (Satış Noktası) sistemleri, adisyon, stok takip, online entegrasyon ve ilgili ek modüllerden (barkod sistemleri vb.) oluşan paketleri kullanım şartlarının ve tarafların hak ve yükümlülüklerinin belirlenmesidir.</p>
+                    Bu sözleşmenin konusu, Kullanıcı'nın EA Yazılım tarafından sağlanan anahtar teslim web sitesi tasarım ve geliştirme hizmetleri, işletme dashboard çözümleri, POS sistemleri ve ilgili ek hizmetlerden yararlanma şartlarının ve tarafların hak ve yükümlülüklerinin belirlenmesidir.</p>
 
-                    <p><strong>3. Hizmet Kapsamı ve Paket Sınırları</strong><br>
-                    Kullanıcı, seçmiş olduğu pakete (1 Bilgisayar, 3 Bilgisayar veya Sınırsız Bilgisayar/Entegrasyon) ait sınırlar dahilinde sistemi kullanabilir. Paket sınırlarının aşılmaya çalışılması veya yazılımın yetkisiz cihazlara kopyalanması durumunda Hizmet Sağlayıcı, hizmeti durdurma hakkını saklı tutar.</p>
+                    <p><strong>3. Hizmet Kapsamı</strong><br>
+                    Anahtar teslim web sitesi hizmeti; tasarım, geliştirme, SEO optimizasyonu, hosting sağlanması (1 yıl), SSL sertifikası, alan adı tescili (1 yıl) ve yayına alma süreçlerini kapsar. Kullanıcı, seçmiş olduğu pakete (Kurumsal, Profesyonel veya E-Ticaret) ait özellikler dahilinde hizmetten yararlanır. Paket kapsamını aşan talepler ek ücrete tabidir.</p>
 
-                    <p><strong>4. Kurulum ve İnternet Bağlantısı</strong><br>
-                    <strong>Uzaktan Kurulum:</strong> Uzaktan kurulum gerektiren durumlarda sistem aynı gün içerisinde çevrimiçi olarak Kullanıcı'ya teslim edilir.<br><br>
-                    <strong>Lokal (Yerinde) Kurulum:</strong> Fiziki kurulum gerektiren paketlerde EA Yazılım ekibi, 1 hafta içerisinde işletmeye giderek kurulumu tamamlar.<br><br>
-                    <strong>İnternet Kesintileri:</strong> Bulut tabanlı (abonelikli) sistemlerde yazılımın çalışması için aktif bir internet bağlantısı gereklidir. Kesinti durumunda lisans doğrulama hatası yaşanabilir. Lokal kurulum barındıran ömür boyu paketlerde ise sistem internetsiz ortamda da kesintisiz çalışmaya devam eder.</p>
+                    <p><strong>4. Proje Süreci ve Teslimat</strong><br>
+                    <strong>Keşif:</strong> Hizmet başlamadan önce Kullanıcı'nın ihtiyaçları belirlenir ve proje kapsamı netleştirilir.<br><br>
+                    <strong>Tasarım:</strong> Markaya özel tasarım çalışmaları sunulur. Kullanıcı, tasarım onayını yazılı olarak verir.<br><br>
+                    <strong>Geliştirme:</strong> Onaylanan tasarım doğrultusunda kodlama, SEO optimizasyonu ve içerik entegrasyonu gerçekleştirilir.<br><br>
+                    <strong>Yayın:</strong> Test sürecinin ardından site canlıya alınır ve kullanım eğitimi verilir. Teslim süresi; Kurumsal paketlerde 1-2 hafta, Profesyonel paketlerde 2-4 hafta, E-Ticaret paketlerinde 3-6 hafta arasındadır.</p>
 
                     <p><strong>5. Satış Sonrası Destek ve Bakım</strong><br>
-                    EA Yazılım, sistemin sağlıklı çalışması için otomatik yazılım güncellemelerini sağlar. Kullanıcı, kurulum sonrasında Hizmet Sağlayıcı yetkililerinin şahsi iletişim numaraları üzerinden, acil durumlarda 7/24 teknik destek talep etme hakkına sahiptir. Donanım (barkod okuyucu, yazıcı, bilgisayar vb.) kaynaklı arızalar bu yazılım destek kapsamının dışındadır.</p>
+                    EA Yazılım, web sitesinin sağlıklı çalışması için hosting ve SSL süresi boyunca teknik destek sağlar. İçerik yönetim paneli kullanım eğitimi dahildir. Hosting yenileme, alan adı yenileme ve ek geliştirme talepleri ayrıca fiyatlandırılır. POS ve KDS sistemleri geliştirme aşamasında olup, hizmete sunulduğunda ayrı sözleşme kapsamında değerlendirilir.</p>
 
                     <p><strong>6. Ücretlendirme ve İade Koşulları</strong><br>
-                    Kullanıcı, seçtiği paketin (aylık abonelik veya tek seferlik lokal lisans) ücretini peşin veya belirlenen vadelerde ödemekle yükümlüdür. Seçilen pakete sonradan eklenecek opsiyonel barkod sistemleri vb. donanım/yazılım entegrasyonları ek ücrete tabidir. Dijital lisans ve kurulum hizmeti sağlandığından, kurulum tamamlandıktan sonra ücret iadesi yapılmaz.</p>
+                    Kullanıcı, seçtiği paketin ücretini belirlenen ödeme planına göre ödemekle yükümlüdür. Dijital hizmet (web sitesi tasarım ve geliştirme) niteliği gereği, proje başladıktan sonraki iptal taleplerinde iade yapılmaz. Proje başlamadan önceki iptal taleplerinde, henüz başlanmamış iş kalemleri için iade değerlendirmesi yapılır.</p>
 
                     <p><strong>7. Veri Güvenliği ve Yedekleme</strong><br>
-                    EA Yazılım, bulut sisteminde tutulan Kullanıcı verilerini (stok, satış, raporlar) endüstri standartlarında korumak için gerekli teknik tedbirleri alır. Lokal (çevrimdışı) kurulum yapılan işletmelerde verilerin güvenliği, donanımın korunması ve yedeklenmesi tamamen Kullanıcı'nın sorumluluğundadır; bilgisayar arızalarından doğacak veri kayıplarından EA Yazılım sorumlu tutulamaz.</p>
+                    EA Yazılım, hosting hizmeti kapsamında Kullanıcı'nın web sitesi verilerini güvenli sunucularda barındırır. Kullanıcı, içerik yönetim paneli üzerinden yaptığı değişikliklerin yedeklenmesinden sorumludur. EA Yazılım, sunucu kaynaklı veri kayıplarında azami özeni göstermekle birlikte, üçüncü taraf sunucu sağlayıcılarının hizmet kesintilerinden kaynaklanan veri kayıplarından sorumlu tutulamaz.</p>
 
                     <p><strong>8. Fikri Mülkiyet Hakları</strong><br>
-                    EA Yazılım logosu, tasarımı, arayüzü, kaynak kodları ve tüm algoritmaları EA Yazılım'a aittir. Kullanıcı, sistemi kiralama veya lisanslama yoluyla kullanma hakkına sahiptir; yazılımı satamaz, kopyalayamaz, tersine mühendislik yapamaz veya kaynak kodlarını değiştiremez.</p>
+                    EA Yazılım logosu, tasarımı, arayüzü, kaynak kodları ve tüm algoritmaları EA Yazılım'a aittir. Kullanıcı, web sitesini kullanma hakkına sahiptir; kaynak kodları kopyalayamaz, tersine mühendislik yapamaz veya üçüncü şahıslara devredemez. Kullanıcı tarafından sağlanan içerikler (metin, görsel, logo vb.) Kullanıcı'ya aittir.</p>
 
-                    <p><strong>9. Uyuşmazlıkların Çözümü</strong><br>
+                    <p><strong>9. Mücbir Sebepler</strong><br>
+                    Doğal afetler, savaş, pandemi, internet kesintileri, sunucu arızaları gibi EA Yazılım'ın kontrolü dışındaki mücbir sebeplerden kaynaklanan gecikme veya hizmet kesintilerinden EA Yazılım sorumlu tutulamaz.</p>
+
+                    <p><strong>10. Uyuşmazlıkların Çözümü</strong><br>
                     İşbu sözleşmenin uygulanmasından veya yorumlanmasından doğacak her türlü uyuşmazlığın çözümünde Türkiye Cumhuriyeti kanunları uygulanacak olup, uyuşmazlıkların çözümünde Manisa Mahkemeleri ve İcra Daireleri yetkilidir.</p>
+                </div>
+
+                <div class="mt-10 pt-8 border-t border-gray-100">
+                    <p class="text-gray-400 text-sm font-medium">Sorularınız için <a href="iletisim.html" class="text-blue-600 hover:text-blue-700 transition-colors">iletişim sayfamızdan</a> bize ulaşabilirsiniz.</p>
                 </div>
             </div>
         </div>
     </main>
-    <footer class="bg-gray-900 text-gray-300 py-8 border-t border-gray-800 mt-auto text-center text-sm">
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 pt-16 pb-8 border-t border-gray-800 mt-auto">
         <div class="max-w-7xl mx-auto px-6">
-            <p>&copy; 2026 EA Yazılım. Tüm hakları saklıdır.</p>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-1">
+                    <div class="mb-6 opacity-90 hover:opacity-100 transition-opacity">
+                        <img src="./logo-horizontal.svg" alt="EA Yazılım" style="height: 32px; width: auto; filter: brightness(0) invert(1);">
+                    </div>
+                    <p class="text-sm text-gray-400 font-medium leading-relaxed mb-6">Anahtar teslim web sitelerinden işletme dashboard'larına, dijital dönüşüm çözümleri sunan yazılım şirketi.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6 tracking-wide">Çözümler</h4>
+                    <ul class="space-y-4 text-sm font-medium">
+                        <li><a href="web-sitesi.html" class="hover:text-white transition-colors">Web Sitesi</a></li>
+                        <li><a href="cozumler.html#dashboard" class="hover:text-white transition-colors">Dashboard</a></li>
+                        <li><a href="cozumler.html#pos" class="hover:text-white transition-colors flex items-center gap-2">POS Sistemi <span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-500/20 text-amber-400">Yakında</span></a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6 tracking-wide">Şirket</h4>
+                    <ul class="space-y-4 text-sm font-medium">
+                        <li><a href="hakkimizda.html" class="hover:text-white transition-colors">Hakkımızda</a></li>
+                        <li><a href="fiyatlandirma.html" class="hover:text-white transition-colors">Teklif Alın</a></li>
+                        <li><a href="iletisim.html" class="hover:text-white transition-colors">İletişim</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6 tracking-wide">Yasal</h4>
+                    <ul class="space-y-4 text-sm font-medium">
+                        <li><a href="kullanim-kosullari.html" class="hover:text-white transition-colors font-semibold">Kullanım Koşulları</a></li>
+                        <li><a href="gizlilik-politikasi.html" class="hover:text-white transition-colors">Gizlilik Politikası</a></li>
+                        <li><a href="kvkk-aydinlatma-metni.html" class="hover:text-white transition-colors">KVKK Aydınlatma Metni</a></li>
+                        <li><a href="iade-politikasi.html" class="hover:text-white transition-colors">İade Politikası</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-gray-500">
+                <div>&copy; 2026 EA Yazılım A.Ş. Tüm hakları saklıdır.</div>
+                <div>Türkiye'de sevgiyle geliştirildi</div>
+            </div>
         </div>
     </footer>
+
+    <script src="./src/app.js"></script>
 </body>
+
 </html>
