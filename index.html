@@ -54,7 +54,7 @@
     <main class="flex-grow">
 
         <!-- Hero -->
-        <section class="relative pt-24 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
+        <section class="relative pt-24 pb-20 lg:pt-40 lg:pb-32 overflow-hidden" data-cms-section="hero">
             <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl">
                 <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-blue-100 to-blue-300 opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"></div>
             </div>
@@ -80,7 +80,7 @@
         </section>
 
         <!-- İstatistikler -->
-        <section class="py-16 bg-gray-50 border-y border-gray-100">
+        <section class="py-16 bg-gray-50 border-y border-gray-100" data-cms-section="stats">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                     <div class="reveal">
@@ -104,7 +104,7 @@
         </section>
 
         <!-- Öne Çıkan Çözümler -->
-        <section class="py-24 bg-white">
+        <section class="py-24 bg-white" data-cms-section="solutions">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="text-center mb-16 reveal">
                     <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 mb-4">Öne Çıkan Çözümlerimiz</h2>
@@ -147,7 +147,7 @@
         </section>
 
         <!-- Neden EA Yazılım -->
-        <section class="py-24 bg-gray-50 border-t border-gray-100">
+        <section class="py-24 bg-gray-50 border-t border-gray-100" data-cms-section="why_cards">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="text-center mb-16 reveal">
                     <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 mb-4">Neden EA Yazılım?</h2>
@@ -187,7 +187,7 @@
         </section>
 
         <!-- CTA -->
-        <section class="py-24 bg-white border-t border-gray-100">
+        <section class="py-24 bg-white border-t border-gray-100" data-cms-section="cta">
             <div class="max-w-4xl mx-auto px-6 text-center reveal">
                 <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 mb-6">İşletmenizi Dijital Çağa Taşımaya Hazır mısınız?</h2>
                 <p class="text-lg text-gray-500 font-medium mb-10 max-w-2xl mx-auto">Uzman ekibimizle ücretsiz danışmanlık görüşmesi yapın. İhtiyaçlarınıza özel çözümler sunalım.</p>
@@ -255,6 +255,7 @@
 
     <script type="module" src="./src/form-handler.js"></script>
     <script src="./src/app.js"></script>
+    <script src="./src/cms.js"></script>
 </body>
 
 </html>
